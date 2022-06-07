@@ -7,7 +7,7 @@ cap.set(3,1280)
 cap.set(4,720)
 hand_detector = htm.HandDetector(detection_con=0.8)
 
-cx,cy,w,h = 100,100,200,200
+cx,cy,w,h = 100,100,90,90
 color_box = (233,22,0)
 while True :
 	_, img = cap.read()
@@ -22,11 +22,13 @@ while True :
 		# print(middle_finger)
 		distance = hand_detector.find_distance(index_finger,middle_finger,img)
 		if cx-(w//2) < index_finger[0] < cx+(w//2) and cy-(h//2) < index_finger[1] < cy+(h//2):
-			if distance < 20:
+			if distance < 30:
 				color_box = (0,0,255)
 				cx,cy = index_finger
 			else:
 				color_box = (233,22,0)
+		else:
+			color_box = (233,22,0)
 
 	
 	cv2.rectangle(img,(cx-(w//2),cy-(h//2)),(cx+(w//2),cy+(h//2)),color_box,cv2.FILLED)

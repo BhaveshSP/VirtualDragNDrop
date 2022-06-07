@@ -52,7 +52,6 @@ class HandDetector:
 
 		return all_hands
 	def find_distance(self,point_one,point_two,img,draw=True):
-		print(point_one)
 		x_one,y_one = point_one
 		x_two,y_two = point_two 
 		distance = math.hypot(x_two-x_one,y_two-y_one)
